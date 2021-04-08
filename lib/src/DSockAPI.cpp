@@ -24,11 +24,16 @@ DRV DSockAPI::drecv(const int &fd, std::string &msg)
     }
 
     char buf[RECV_SIZE];
+    ssize_t totalSize = 0;
     while (true) {
         memset(buf, 0, sizeof(buf));
         ssize_t readSize = recv(fd, buf, sizeof(buf), 0);
-        if (readSize > 0)
-            msg.append(buf);
+
+        if (readSize <= 0 && 0 == totalSize)
+            return DRV_SIZE_UN_POSITIVE;
+
+        msg.append(buf);
+        totalSize += readSize;
 
         // Data receiving completed, directly exit
         if (readSize < RECV_SIZE)
@@ -90,11 +95,16 @@ DRV DSockAPI::dsend(const int &fd, const char *buf, const size_t &size)
     size_t curPos = 0; // current pos
     while (leftBufSize > 0) {
         ssize_t sendSize = send(fd, buf + curPos, leftBufSize, 0);
-        if (sendSize < 0) {
-            return DRV_SIZE_NEGATIVE;
+        if (sendSize > 0) {
+            leftBufSize -= static_cast<size_t>(sendSize);
+            curPos += static_cast<size_t>(sendSize);
+            continue;
         }
-        leftBufSize -= static_cast<size_t>(sendSize);
-        curPos += static_cast<size_t>(sendSize);
+
+        if (0 == curPos)
+            return DRV_ERROR;
+        else
+            break;
     }
     return DRV_OK;
 }
