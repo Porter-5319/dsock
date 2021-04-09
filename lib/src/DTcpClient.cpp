@@ -59,12 +59,7 @@ DRV DTcpClient::recvMsg(std::string &msg, int s, int us)
     /**
      * read buf
      */
-    res = drecv(m_ClientFD, msg);
-    if (DRV_OK != res) {
-        return res;
-    }
-
-    return res;
+    return drecv(m_ClientFD, msg);
 }
 
 DRV DTcpClient::sendMsg(const std::string &msg)
@@ -72,8 +67,7 @@ DRV DTcpClient::sendMsg(const std::string &msg)
     /**
      * Wait for a certain amount of time and return if the time expires
      */
-    DRV res;
-    res = waiting(m_ClientFD, 0, 0);
+    DRV res = waiting(m_ClientFD, 0, 0);
     if (DRV_OK != res) {
         printf("waiting return false in client .... \n");
         return res;
@@ -82,10 +76,5 @@ DRV DTcpClient::sendMsg(const std::string &msg)
     /**
      * *****************************************************************
      */
-    res = dsend(m_ClientFD, msg);
-    if (DRV_OK != res) {
-        return res;
-    }
-
-    return res;
+    return dsend(m_ClientFD, msg);
 }
