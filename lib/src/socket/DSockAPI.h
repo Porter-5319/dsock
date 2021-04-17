@@ -1,14 +1,7 @@
 #ifndef DSOCKAPI_H
 #define DSOCKAPI_H
 
-#include <arpa/inet.h>
-#include <unistd.h>
-#include <string.h>
-#include <string>
-#include <sys/socket.h>
-#include <netdb.h>
-
-#include "Common.h"
+#include "../Common.h"
 
 /**
  * @brief The DSockAPI class

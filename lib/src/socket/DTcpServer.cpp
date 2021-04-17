@@ -115,3 +115,12 @@ DRV DTcpServer::sendMsg(const std::string &msg)
 
     return res;
 }
+
+void DTcpServer::closeClientFD()
+{
+    closeFD(m_ClientFD);
+}
+void DTcpServer::closeServerFD()
+{
+    closeFD(m_ServerFD);
+}

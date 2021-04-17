@@ -14,7 +14,7 @@ project(${APP_NAME})
 
 find_package(Qt5Core)
 
-include_directories(${CMAKE_SOURCE_DIR}/lib/src)
+include_directories(${CMAKE_SOURCE_DIR}/lib/src/socket)
 link_directories(${CMAKE_SOURCE_DIR}/lib)
 link_libraries("dsock")
 

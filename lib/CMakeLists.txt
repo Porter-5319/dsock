@@ -10,13 +10,17 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(APP_NAME "dsock")
 project(${APP_NAME})
 
+include_directories(${CMAKE_CURRENT_SOURCE_DIR}/src
+                    ${CMAKE_CURRENT_SOURCE_DIR}/src/socket
+                    ${CMAKE_CURRENT_SOURCE_DIR}/src/signal
+                )
+
 SET(LIBRARY_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/../lib)
 
 find_package(Qt5Core)
 
 file(GLOB_RECURSE SRC_CPP ${CMAKE_CURRENT_LIST_DIR}/src/*.cpp)
 file(GLOB_RECURSE SRC_H ${CMAKE_CURRENT_LIST_DIR}/src/*.h)
-#add_executable(${APP_NAME} ${SRC_CPP} ${SRC_H})
 add_library(${APP_NAME} ${SRC_CPP} ${SRC_H}) # 生成静态库
 
 target_link_libraries(${APP_NAME} Qt5::Core)

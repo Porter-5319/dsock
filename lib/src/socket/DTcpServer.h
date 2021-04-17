@@ -37,6 +37,16 @@ public:
      */
     DRV sendMsg(const std::string &msg);
 
+    /**
+     * @brief closeClientFD
+     */
+    void closeClientFD();
+
+    /**
+     * @brief closeServerFD
+     */
+    void closeServerFD();
+
 private:
     int                     m_ServerFD;            //<! server fd
     int                     m_ClientFD;            //<! client fd
