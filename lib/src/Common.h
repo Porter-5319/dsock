@@ -33,29 +33,6 @@ enum  DRV {
     DRV_CHILD_EXIT       = 0x020,
 };
 
-
-
-
-/**
- * @brief fatherExit : The signal handler whe the parent process exits
- * @param sig
- */
-//void fatherExit(int sig)
-//{
-//    if (sig > 0) {
-//        signal(sig, SIG_IGN);
-//        signal(SIGINT, SIG_IGN);
-//        signal(SIGTERM, SIG_IGN);
-//    }
-
-//    //
-//    kill(0, 15);
-
-//    // 释放资源
-//}
-//void childExit(int sig);
-
-
 /**
  * @brief DELETE_PTR : Defines a macro that deletes a pointer
  */

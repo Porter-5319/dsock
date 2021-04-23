@@ -1,6 +1,4 @@
 #include "DForkServer.h"
-#include "DSignal.h"
-
 
 DForkServer::DForkServer()
     : mp_Server(nullptr)

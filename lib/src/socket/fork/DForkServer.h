@@ -60,5 +60,6 @@ private:
  *      The child process only needs to communicate , not listen , so close server FD
  *
  *   2. How to avoid zombie process
+ *   3. All children needs to be notified when the parent process ends
  *
  */
